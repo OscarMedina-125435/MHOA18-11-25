@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}Resultados{% endblock %}
+{% block contenido %}
+<h2 class="mb-4">Resultados para: <strong>{{ busqueda }}</strong></h2>
+
+{% if datos.foods %}
+    <ul class="list-group">
+    {% for item in datos.foods %}
+        <li class="list-group-item mb-2">
+            <h5>{{ item.description }}</h5>
+            <p><strong>FDC ID:</strong> {{ item.fdcId }}</p>
+            {% if item.foodNutrients %}
+                <p><strong>Nutrientes:</strong></p>
+                <ul>
+                {% for n in item.foodNutrients %}
+                    <li>{{ n.nutrientName }}: {{ n.value }} {{ n.unitName }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p class="text-muted">No se encontraron resultados.</p>
+{% endif %}
+{% endblock %}
+

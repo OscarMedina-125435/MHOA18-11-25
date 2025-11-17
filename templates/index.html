@@ -1,14 +1,13 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
-{% block title %}Buscar Pokémon{% endblock %}
+{% block title %}Buscar Alimentos{% endblock %}
 
-{% block content %}
-<form action="{{ url_for('search_pokemon') }}" method="POST">
-  <div class="mb-3">
-    <label for="pokemon_name" class="form-label">Nombre del Pokémon</label>
-    <input type="text" class="form-control" id="pokemon_name" name="pokemon_name" placeholder="Ejemplo: pikachu">
-    <div class="form-text">Busca tu Pokémon favorito</div>
-  </div>
-  <button type="submit" class="btn btn-primary">Buscar</button>
+{% block contenido %}
+<h2 class="mb-4">Buscador USDA</h2>
+<form action="/buscar" method="POST" class="d-flex gap-2">
+    <input type="text" name="texto" class="form-control" placeholder="Busca un alimento (ej. apple, milk)" required>
+    <button type="submit" class="btn btn-primary">Buscar</button>
 </form>
 {% endblock %}
+
+
